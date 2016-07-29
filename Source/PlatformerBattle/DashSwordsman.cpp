@@ -16,6 +16,10 @@ void ADashSwordsman::BeginPlay()
 {
   Super::BeginPlay();
 
+  //set all attack booleans. 
+  HasAttackOnce = false;
+  HasAttackTwice = false;
+  HasAttackThreeTimes = false;
 }
 
 void ADashSwordsman::Tick(float DeltaSeconds)
@@ -40,9 +44,28 @@ void ADashSwordsman::Attack()
     End = Start + FVector::ForwardVector * -100;
   }
 
+  if (HasAttackTwice)
+  {
+    ThirdAttack.Broadcast(HasAttackThreeTimes);
+    ExecuteAttack(Start, End);
+  }
+  else if (HasAttackOnce)
+  {
+    SecondAttack.Broadcast(HasAttackTwice);
+    ExecuteAttack(Start, End);
+  }
+  else
+  {
+    FirstAttack.Broadcast(HasAttackOnce);
+    ExecuteAttack(Start, End);
+  }
+
+}
+
+void ADashSwordsman::ExecuteAttack(const FVector &StartingPos, const FVector &EndPos)
+{
   FHitResult HitData(ForceInit);
-  GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("Attack is working"));
-  if (UStaticFunctionLibrary::Trace(GetWorld(), this, Start, End, HitData))
+  if (UStaticFunctionLibrary::Trace(GetWorld(), this, StartingPos, EndPos, HitData))
   {
     GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Attack is working"));
     AGeneralCharacter * EP = Cast<AGeneralCharacter>(HitData.GetActor());
