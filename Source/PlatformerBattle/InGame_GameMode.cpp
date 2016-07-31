@@ -17,8 +17,8 @@ AActor * AInGame_GameMode::ChoosePlayerStart_Implementation(AController * Player
   {
     TArray<ACustomPlayerStart * > Starts;
     for (TActorIterator<ACustomPlayerStart> StartItr(GetWorld()); StartItr; ++StartItr)
-    {
-      Starts.Add(*StartItr);
+    { 
+				Starts.Add(*StartItr);
     }
 
     return Starts[FMath::RandRange(0, Starts.Num() - 1)];

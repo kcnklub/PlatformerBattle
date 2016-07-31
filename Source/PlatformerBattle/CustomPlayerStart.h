@@ -11,9 +11,11 @@
 UCLASS()
 class PLATFORMERBATTLE_API ACustomPlayerStart : public APlayerStart
 {
-	GENERATED_BODY()
-	
-	
+		GENERATED_BODY()
+
+public:
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PlayerOrSpectator")
+			bool bIsSpectatorSpawn;
 	
 	
 };

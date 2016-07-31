@@ -4,5 +4,12 @@
 #include "MainMenuWidget.h"
 
 
-
+void UMainMenuWidget::SwitchToNextMenu(const TSubclassOf<UUserWidget> NewMenu)
+{
+		AMenu_Gamemode * Gamemode = Cast<AMenu_Gamemode>(GetWorld()->GetAuthGameMode());
+		if (Gamemode)
+		{
+				Gamemode->ChangeMenuWidget(NewMenu);
+		}
+}
 

@@ -17,6 +17,7 @@ void AInGame_PlayerController::OnDeath()
 {
   GetPawn()->bCanBeDamaged = false;
   UnPossess();
+	SpawnSpectatorPawn();
   GetWorldTimerManager().SetTimer(DeathHandle, this, &AInGame_PlayerController::AdvanceRespawnTimer, true, 1.0f); 
 }
 
@@ -34,7 +35,7 @@ void AInGame_PlayerController::AdvanceRespawnTimer()
 
 void AInGame_PlayerController::Respawn()
 {
-
+	UnPossess();
   AGameMode * Gamemode = GetWorld()->GetAuthGameMode();
 
   if (Gamemode)

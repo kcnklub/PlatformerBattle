@@ -3,6 +3,7 @@
 #pragma once
 
 #include "Blueprint/UserWidget.h"
+#include "Menu_Gamemode.h"
 #include "MainMenuWidget.generated.h"
 
 /**
@@ -18,4 +19,7 @@ protected:
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Indexing)
     int ButtonIndex;
 	
+
+	UFUNCTION(BlueprintCallable, Category = "MainMenu")
+		void SwitchToNextMenu(const TSubclassOf<UUserWidget> NewMenu);
 };
