@@ -22,4 +22,5 @@ protected:
 
 	UFUNCTION(BlueprintCallable, Category = "MainMenu")
 		void SwitchToNextMenu(const TSubclassOf<UUserWidget> NewMenu);
+
 };
