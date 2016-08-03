@@ -58,7 +58,7 @@ float AGeneralCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 {
 
   float ActualDamage = Super::TakeDamage(DamageAmount, DamageEvent, EventInstigator, DamageCauser);
-
+  GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("in Take damage function"));
   m_Health -= static_cast<int>(ActualDamage);
   if (bCanBeDamaged)
   {

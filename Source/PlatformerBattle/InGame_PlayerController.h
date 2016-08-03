@@ -3,6 +3,9 @@
 #pragma once
 
 #include "GameFramework/PlayerController.h"
+#include "StaticFunctionLibrary.h"
+#include "Risputa.h"
+#include "DashSwordsman.h"
 #include "InGame_PlayerController.generated.h"
 
 /**
@@ -18,8 +21,18 @@ class PLATFORMERBATTLE_API AInGame_PlayerController : public APlayerController
 public: 
   
   AInGame_PlayerController();
-  
-  int Score;
+
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gamemode")
+    Champion SelectedChampionClass;
+
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gamemode")
+    TSubclassOf<ADashSwordsman> DashSwordsmanClass;
+
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gamemode")
+    TSubclassOf<ARisputa> RisputaClass;
+
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Gamemode")
+    int Score;
 
   void OnDeath();
 

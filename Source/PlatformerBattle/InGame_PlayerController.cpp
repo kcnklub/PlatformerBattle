@@ -17,7 +17,6 @@ void AInGame_PlayerController::OnDeath()
 {
   GetPawn()->bCanBeDamaged = false;
   UnPossess();
-	SpawnSpectatorPawn();
   GetWorldTimerManager().SetTimer(DeathHandle, this, &AInGame_PlayerController::AdvanceRespawnTimer, true, 1.0f); 
 }
 
@@ -40,6 +39,19 @@ void AInGame_PlayerController::Respawn()
 
   if (Gamemode)
   {
+    switch(SelectedChampionClass)
+    {
+      case Champion::DashSwordsman:
+      {
+        Gamemode->DefaultPawnClass = DashSwordsmanClass;
+        break;
+      }
+      case Champion::Risputa:
+      {
+        Gamemode->DefaultPawnClass = RisputaClass;
+        break;
+      }
+    }
     APawn * NewPawn = Gamemode->SpawnDefaultPawnFor(this, Gamemode->ChoosePlayerStart_Implementation(this));
     Possess(NewPawn);
   }

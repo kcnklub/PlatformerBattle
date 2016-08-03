@@ -8,6 +8,14 @@
 /**
  * 
  */
+
+UENUM(BlueprintType)
+enum class Champion : uint8
+{
+  DashSwordsman,
+  Risputa
+};
+
 UCLASS()
 class PLATFORMERBATTLE_API UStaticFunctionLibrary : public UObject
 {
