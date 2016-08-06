@@ -30,6 +30,15 @@ public:
     FHitResult& HitOut,
     ECollisionChannel CollisionChannel = ECC_Pawn,
     bool ReturnPhsMat = false);
-	
+
+
+	/*
+
+	//Working on an custom delay that will set up a timer that will act as a delay when this function is called.
+
+	static void CustomDelay(UWorld* World,
+		FTimerDelegate FunctionCall,
+		const float DelayTime);
+	*/
 	
 };

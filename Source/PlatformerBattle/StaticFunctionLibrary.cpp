@@ -34,3 +34,18 @@ bool UStaticFunctionLibrary::Trace(UWorld* World,
   return (HitOut.GetActor() != NULL);
 }
 
+
+
+/*
+
+//Working on an custom delay that will set up a timer that will act as a delay when this function is called. 
+
+void UStaticFunctionLibrary::CustomDelay(UWorld* World,
+	FTimerDelegate FunctionCall,
+	const float DelayTime)
+{
+	FTimerHandle DelayHandle;
+	World->GetTimerManager().SetTimer(DelayHandle, FunctionCall, false, DelayTime);
+}
+*/
+

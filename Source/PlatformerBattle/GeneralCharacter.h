@@ -72,6 +72,11 @@ public:
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = ClearCharacter)
   int ClearCharacterTimer;
 
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Jump)
+  float JumpSpeed;
+
+  void CustomJump();
+
   //Get Private pointers;
   FORCEINLINE class UCameraComponent * GetCameraComponent() const { return Camera; }
   FORCEINLINE class USpringArmComponent * GetCameraArmComponent() const { return CameraArm; }

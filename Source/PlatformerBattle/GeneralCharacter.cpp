@@ -49,6 +49,9 @@ void AGeneralCharacter::SetupPlayerInputComponent(class UInputComponent * InputC
 {
   //Action Bindings;
   InputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+  
+  //Experimental jump cancel prototype
+  //InputComponent->BindAction("Jump", IE_Released, this, &AGeneralCharacter::CustomJump);
 
   //Axis Bindings;
   InputComponent->BindAxis("MoveRight", this, &AGeneralCharacter::MoveRight);
@@ -125,3 +128,7 @@ void AGeneralCharacter::AdvanceClearCharacter()
   }
 }
 
+void AGeneralCharacter::CustomJump()
+{
+	GetCharacterMovement()->Launch((FVector::UpVector) * (JumpSpeed));
+}

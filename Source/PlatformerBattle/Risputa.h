@@ -9,6 +9,7 @@
 
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAttacked, bool, bIsAttacking);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FTeleport, bool, bIsTeleporting);
 
 /**
  * 
@@ -56,5 +57,18 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reticle")
 		FVector GroundCheck;
-  
+	bool bIsLockedOrientation;
+	void UpdateCharacter();
+	void LockOrientation();
+
+	//Teleporting variables and functions;
+	UPROPERTY(BlueprintAssignable, Category = "Teleport")
+	FTeleport Teleporting;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Teleport")
+	bool bIsTeleporting;
+	
+	void Teleport();
+
+	float DistanceOfTrace;
 };
