@@ -25,13 +25,14 @@ void ARisputa::Tick(float DeltaSeconds)
 {
   Super::Tick(DeltaSeconds);
   
-  if (GetCharacterMovement()->IsFalling())
+	FHitResult HitData;
+  if (UStaticFunctionLibrary::Trace(GetWorld(), this, Reticle->GetComponentLocation(), Reticle->GetComponentLocation() + GroundCheck, HitData))
   {
-    Reticle->SetFlipbook(AirBornReticle);
+    Reticle->SetFlipbook(GroundReticle);
   }
   else
   {
-    Reticle->SetFlipbook(GroundReticle);
+    Reticle->SetFlipbook(AirBornReticle);
   }
 
   if (bIsFacingRight)

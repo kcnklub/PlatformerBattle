@@ -4,6 +4,7 @@
 
 #include "GeneralCharacter.h"
 #include "RisputaBasicAttack.h"
+#include "StaticFunctionLibrary.h"
 #include "Risputa.generated.h"
 
 
@@ -52,5 +53,8 @@ public:
 
   UPROPERTY(BlueprintAssignable, Category = "AttackEvents")
     FAttacked Attacking;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Reticle")
+		FVector GroundCheck;
   
 };
